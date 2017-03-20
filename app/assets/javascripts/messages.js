@@ -16,6 +16,9 @@ function subscribe_room(room_id){
         //   ' at ' + data['created_at'] +
         //   '</li>'
         // );
+      },
+      speak: function(content){
+        this.perform("speak", {content: content})
       }
     }
   );

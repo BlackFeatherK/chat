@@ -8,10 +8,22 @@
   </p>
 <% end %>
 
+<h2>Websocket Speak</h2>
+<p>
+  <input type="text" id="input-content">
+  <input type="submit" id="input-submit" value="Submit">
+</p>
+
 <ul id="messages">
   <%= render partial: 'messages/message', collection: @messages, as: :message %>
 </ul>
 
 <script>
   subscribe_room('<%= @room.id %>');
+
+  $('#input-submit').click((e) => {
+    var content = $('#input-content').val();
+    App.messages.speak(content);
+    $('#input-content').val("");
+  });
 </script>
