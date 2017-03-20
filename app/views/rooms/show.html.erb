@@ -9,12 +9,7 @@
 <% end %>
 
 <ul id="messages">
-  <% @messages.each do |message| %>
-    <li>
-      <%= message.content %>
-      at <%= message.created_at %>  
-    </li>
-  <% end %>
+  <%= render partial: 'messages/message', collection: @messages, as: :message %>
 </ul>
 
 <script>
