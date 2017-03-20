@@ -1,0 +1,22 @@
+<h2><%= @room.name %></h2>
+
+<h2>Ajax Speak</h2>
+<%= form_for [@room,Message.new], remote: true do |f| %>
+  <p>
+    <%= f.text_field :content %>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<ul id="messages">
+  <% @messages.each do |message| %>
+    <li>
+      <%= message.content %>
+      at <%= message.created_at %>  
+    </li>
+  <% end %>
+</ul>
+
+<script>
+  subscribe_room('<%= @room.id %>');
+</script>
